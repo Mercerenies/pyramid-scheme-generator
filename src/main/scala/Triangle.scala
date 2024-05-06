@@ -4,6 +4,8 @@ package com.mercerenies.pyramids
 sealed abstract class Triangle {
   def totalHeight: Int
   def myHeight: Int
+
+  def draw(grid: Grid, origin: Point): Unit
 }
 
 object Triangle {
@@ -16,6 +18,9 @@ case class Leaf(
 ) extends Triangle {
   val myHeight = Triangle.minHeightForText(value)
   def totalHeight = myHeight
+
+  def draw(grid: Grid, origin: Point) =
+    grid.drawTriangle(origin, myHeight, value)
 }
 
 case class Node(
@@ -32,4 +37,10 @@ case class Node(
     math.min(left.totalHeight, right.fold(0) { _.totalHeight }) + 1,
   )
   val totalHeight = myHeight + math.max(left.totalHeight, right.fold(0) { _.totalHeight })
+
+  def draw(grid: Grid, origin: Point) = {
+    grid.drawTriangle(origin, myHeight, function)
+    left.draw(grid, origin + Point(- myHeight, myHeight))
+    right.foreach { _.draw(grid, origin + Point(myHeight, myHeight)) }
+  }
 }

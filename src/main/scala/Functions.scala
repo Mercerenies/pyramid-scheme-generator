@@ -16,5 +16,5 @@ object Functions {
   val rightBr = PFunction2("]")
   val loop = PFunction2("loop")
   val doLoop = PFunction2("do")
-  val ifStmt = PFunction2("if")
+  val ifStmt = PFunction2("?")
 }

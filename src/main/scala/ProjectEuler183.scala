@@ -28,7 +28,7 @@ object ProjectEuler183 {
       x := 1,
       n := 5,
       loop(
-        n < 101,
+        n < 10001,
         begin(
           loop(
             e * (x + 1) < n,
