@@ -7,19 +7,15 @@ sealed abstract class Triangle {
 }
 
 object Triangle {
-
   def minHeightForText(text: String): Int =
     text.length / 2 + 2
-
 }
 
 case class Leaf(
   val value: String,
 ) extends Triangle {
-
   val myHeight = Triangle.minHeightForText(value)
   def totalHeight = myHeight
-
 }
 
 case class Node(
