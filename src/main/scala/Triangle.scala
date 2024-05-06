@@ -14,10 +14,10 @@ object Triangle {
 }
 
 case class Leaf(
-  val value: Double,
+  val value: String,
 ) extends Triangle {
 
-  val myHeight = Triangle.minHeightForText(value.toString)
+  val myHeight = Triangle.minHeightForText(value)
   def totalHeight = myHeight
 
 }
@@ -25,7 +25,7 @@ case class Leaf(
 case class Node(
   val function: String,
   val left: Triangle,
-  val right: Triangle,
+  val right: Option[Triangle],
 ) extends Triangle {
   val myHeight = math.max(
     Triangle.minHeightForText(function),
@@ -33,7 +33,7 @@ case class Node(
     // minimum value of myHeight that will ensure the two children do
     // NOT intersect when drawn. It's an isosceles triangle with one
     // 90 degree angle and the others 45 degrees. :)
-    math.min(left.totalHeight, right.totalHeight) + 1,
+    math.min(left.totalHeight, right.fold(0) { _.totalHeight }) + 1,
   )
-  val totalHeight = myHeight + math.max(left.myHeight, right.myHeight)
+  val totalHeight = myHeight + math.max(left.totalHeight, right.fold(0) { _.totalHeight })
 }
