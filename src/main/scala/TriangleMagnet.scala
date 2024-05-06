@@ -25,4 +25,9 @@ object TriangleMagnet {
       def toTriangle = Leaf(d.toString)
     }
 
+  given VarToTriangleMagnet: Conversion[Var, TriangleMagnet] with
+    def apply(v: Var): TriangleMagnet = new TriangleMagnet {
+      def toTriangle = Leaf(v.name)
+    }
+
 }

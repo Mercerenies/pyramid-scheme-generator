@@ -7,8 +7,8 @@ import scala.language.implicitConversions
 object Code {
   export Functions.*
 
-  def set(name: String, value: TriangleMagnet): Triangle =
-    Node("set", Leaf(name), Some(value.toTriangle))
+  def set(v: Var, value: TriangleMagnet): Triangle =
+    Node("set", Leaf(v.name), Some(value.toTriangle))
 
   def begin(body: Triangle*): Triangle =
     beginBlock(body)
@@ -39,7 +39,7 @@ object Code {
 
   // Extension methods for infix-ish operators.
 
-  extension (a: String)
+  extension (a: Var)
     def :=(b: TriangleMagnet): Triangle =
       set(a, b)
 
@@ -54,4 +54,14 @@ object Code {
       lessOrEqual(a, b)
     def >=(b: TriangleMagnet): Triangle =
       greaterOrEqual(a, b)
+    def +(b: TriangleMagnet): Triangle =
+      plus(a, b)
+    def -(b: TriangleMagnet): Triangle =
+      minus(a, b)
+    def *(b: TriangleMagnet): Triangle =
+      times(a, b)
+    def /(b: TriangleMagnet): Triangle =
+      div(a, b)
+    def ^(b: TriangleMagnet): Triangle =
+      power(a, b)
 }
