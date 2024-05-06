@@ -1,8 +1,4 @@
-## sbt project compiled with Scala 3
 
-### Usage
+Generator for [Pyramid Scheme](https://github.com/ConorOBrien-Foxx/Pyramid-Scheme) programming language for Project Euler #183. See [eulers-melting-pot](https://github.com/Mercerenies/eulers-melting-pot) for details.
 
-This is a normal sbt project. You can compile code with `sbt compile`, run it with `sbt run`, and `sbt console` will start a Scala 3 REPL.
-
-For more information on the sbt-dotty plugin, see the
-[scala3-example-project](https://github.com/scala/scala3-example-project/blob/main/README.md).
+Requires Scala 3 to run. Use `sbt`, the Scala build tool. Outputs to file `problem183.pyra`.
