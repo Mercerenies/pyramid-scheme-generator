@@ -15,6 +15,11 @@ object TriangleMagnet {
       def toTriangle = t
     }
 
+  given IntToTriangleMagnet: Conversion[Int, TriangleMagnet] with
+    def apply(i: Int): TriangleMagnet = new TriangleMagnet {
+      def toTriangle = Leaf(i.toString)
+    }
+
   given DoubleToTriangleMagnet: Conversion[Double, TriangleMagnet] with
     def apply(d: Double): TriangleMagnet = new TriangleMagnet {
       def toTriangle = Leaf(d.toString)
